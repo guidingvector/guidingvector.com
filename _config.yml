@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
+title: Guiding Vector
 email: tom@guidingvector.com
 description: >- # this means to ignore newlines until "baseurl:"
   Guiding Vector is a consultancy specializing in AI and custom software development,
   helping businesses navigate the complexities of modern technology.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://guidingvector.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+twitter_username: guidingvector
 github_username:  guidingvector
 copyright: "Guiding Vector LLC"
 
