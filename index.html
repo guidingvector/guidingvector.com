@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guiding Vector - AI & Custom Software Consultancy</title>
+    <meta name="description"
+        content="Guiding Vector is a forward-thinking consultancy specializing in AI strategy, implementation, and custom software development to empower businesses.">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="assets/inter.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- App Container -->
+    <div id="app" class="flex flex-col min-h-screen">
+
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+            <nav class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="#home" class="flex items-center space-x-3">
+                        <img src="assets/guiding_vector_plain_logo.png" alt="Guiding Vector Logo" class="h-10 w-auto">
+                        <span class="block font-extrabold text-gray-900 mx-auto">Guiding Vector Consulting</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="nav-link active text-gray-900 font-semibold"
+                            onclick="navigate(event, 'home')">Home</a>
+                        <!-- <a href="#about" class="nav-link text-gray-600 hover:text-gray-900"
+                            onclick="navigate(event, 'about')">About</a> -->
+                        <a href="#services" class="nav-link text-gray-600 hover:text-gray-900"
+                            onclick="navigate(event, 'services')">Services</a>
+                        <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900"
+                            onclick="navigate(event, 'contact')">Contact</a>
+                    </div>
+                    <a href="#contact" onclick="navigate(event, 'contact')"
+                        class="hidden md:inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get
+                        In Touch</a>
+                    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+                <a href="#home" class="block py-2 text-gray-700 font-semibold"
+                    onclick="navigate(event, 'home')">Home</a>
+                <!-- <a href="#about" class="block py-2 text-gray-700" onclick="navigate(event, 'about')">About</a> -->
+                <a href="#services" class="block py-2 text-gray-700" onclick="navigate(event, 'services')">Services</a>
+                <a href="#contact" class="block py-2 text-gray-700" onclick="navigate(event, 'contact')">Contact</a>
+                <a href="#contact" onclick="navigate(event, 'contact')"
+                    class="mt-2 block w-full text-center bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Get
+                    In Touch</a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <!-- Page Content will be injected here -->
+            <div id="page-content"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white">
+            <div class="container mx-auto px-6 py-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                    <div>
+                        <a href="#home" class="flex items-center justify-center md:justify-start space-x-3">
+                            <img src="assets/guiding_vector_plain_logo.png" alt="Guiding Vector Logo" class="h-10 w-auto">
+                            <h3 class="text-xl font-bold text-white">Guiding Vector</h3>
+                        </a>
+                        <p class="text-gray-400 mt-2">Navigating the future of technology.</p>
+                    </div>
+                    <div class="flex mt-6 md:mt-0 space-x-6">
+                        <!-- <a href="#about" class="text-gray-400 hover:text-white transition-colors"
+                            onclick="navigate(event, 'about')">About</a> -->
+                        <a href="#services" class="text-gray-400 hover:text-white transition-colors"
+                            onclick="navigate(event, 'services')">Services</a>
+                        <a href="#contact" class="text-gray-400 hover:text-white transition-colors"
+                            onclick="navigate(event, 'contact')">Contact</a>
+                    </div>
+                </div>
+                <hr class="my-6 border-gray-700">
+                <div class="text-center text-gray-500">
+                    <p>&copy; <span id="current-year"></span> Guiding Vector LLC. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Page Templates -->
+    <template id="template-home">
+        <div class="animate-fade-in">
+            <!-- Hero Section -->
+            <section class="bg-white">
+                <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                        Transform Your Business with <span class="text-indigo-600">Intelligent Solutions</span>
+                    </h1>
+                    <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-600">
+                        We provide expert AI consultancy and build bespoke software to solve your most complex
+                        challenges and drive growth.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <a href="#services" onclick="navigate(event, 'services')"
+                            class="w-full sm:w-auto bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg">Explore
+                            Our Services</a>
+                        <a href="#contact" onclick="navigate(event, 'contact')"
+                            class="w-full sm:w-auto bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-transform transform hover:scale-105 border border-gray-200 shadow-lg">Schedule
+                            a Consultation</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Core Focus</h2>
+                        <p class="mt-4 text-lg text-gray-600">We deliver excellence in two key areas.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                            <div class="text-indigo-600 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">AI & Machine Learning</h3>
+                            <p class="text-gray-600">From strategic roadmaps to full-scale model deployment, we unlock
+                                the potential of AI to create intelligent, automated, and data-driven systems for your
+                                business.</p>
+                        </div>
+                        <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                            <div class="text-indigo-600 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Custom Software Development</h3>
+                            <p class="text-gray-600">We architect and engineer robust, scalable, and secure software
+                                solutions tailored to your specific operational needs and business goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <template id="template-about">
+        <div class="animate-fade-in">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-16 text-center">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">About Guiding Vector</h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We are a team of strategists, engineers, and
+                        innovators passionate about technology.</p>
+                </div>
+            </header>
+            <section class="py-20">
+                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="prose prose-lg max-w-none">
+                        <h2 class="text-3xl font-bold">Our Mission</h2>
+                        <p>Our mission is to be the guiding force for businesses navigating the complexities of digital
+                            transformation. We believe that technology, when applied thoughtfully, is the most powerful
+                            tool for creating competitive advantages, driving efficiency, and unlocking new
+                            opportunities.</p>
+                        <h2 class="text-3xl font-bold mt-8">Our Philosophy</h2>
+                        <p>We operate on a philosophy of partnership. We work alongside you, embedding our team with
+                            yours to truly understand your challenges and aspirations. This collaborative approach
+                            ensures that we deliver not just code, but value—solutions that are perfectly aligned with
+                            your vision and built to last.</p>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/e2e8f0/4a5568?text=Our+Team"
+                            alt="A placeholder image of the Guiding Vector team"
+                            class="rounded-lg shadow-xl w-full h-auto">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <template id="template-services">
+        <div class="animate-fade-in">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-16 text-center">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Our Services</h1>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">We offer end-to-end consultancy and
+                        development to bring your technological vision to life.</p>
+                </div>
+            </header>
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <!-- AI Services -->
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-center mb-10">Artificial Intelligence &amp; Machine Learning
+                        </h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">AI Strategy & Roadmapping</h3>
+                                <p class="text-gray-600">We help you identify high-impact AI opportunities and create a
+                                    clear, actionable plan for integration.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">Machine Learning Models</h3>
+                                <p class="text-gray-600">Development of predictive models, recommendation engines, and
+                                    classification systems.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">Natural Language Processing (NLP)</h3>
+                                <p class="text-gray-600">Solutions for sentiment analysis, text summarization, and
+                                    custom chatbot development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Software Development Services -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-center mb-10">Custom Software Development</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">Web Application Development</h3>
+                                <p class="text-gray-600">Building scalable, secure, and performant web apps from the
+                                    ground up.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">Cloud-Native Solutions</h3>
+                                <p class="text-gray-600">Architecting systems for the cloud (AWS, GCP, Azure) to ensure
+                                    scalability and reliability.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                                <h3 class="font-bold text-xl mb-2">API Design & Integration</h3>
+                                <p class="text-gray-600">Connecting your software ecosystem with robust and
+                                    well-documented APIs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <template id="template-contact">
+        <div class="animate-fade-in">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-16 text-center">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Contact Us</h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Let's discuss how we can help you achieve
+                        your goals. Reach out for a no-obligation consultation: <span id="doItHere"></span></p>
+                </div>
+            </header>
+            <!-- <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-lg">
+                        <form id="contact-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="name" name="name" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                        Address</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                                <input type="text" id="subject" name="subject" required
+                                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div class="mt-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="5" required
+                                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                            </div>
+                            <div class="mt-8 text-right">
+                                <button type="submit"
+                                    class="w-full md:w-auto bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Send
+                                    Message</button>
+                            </div>
+                        </form>
+                        <div id="form-feedback" class="mt-4 text-center"></div>
+                    </div>
+                </div>
+            </section> -->
+        </div>
+    </template>
+
+    <script>
+        // reverses the string.
+        function reverseString(str) {
+            if (typeof str !== 'string') return;
+            return str.split('').reverse().join('');
+        }
+        function getEmail() {
+            const user = reverseString('mot');
+            const domain = reverseString('moc.rotcevgnidiug');
+            const email = user + '@' + domain;
+            return `<a href="mailto:${email}" class="underline text-blue-500">${email}</a>`;
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageContent = document.getElementById('page-content');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const pages = {
+                'home': document.getElementById('template-home').innerHTML,
+                'about': document.getElementById('template-about').innerHTML,
+                'services': document.getElementById('template-services').innerHTML,
+                'contact': document.getElementById('template-contact').innerHTML,
+            };
+
+            function updateActiveLink(pageId) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active', 'text-gray-900', 'font-semibold');
+                    link.classList.add('text-gray-600');
+                    if (link.hash === `#${pageId}`) {
+                        link.classList.add('active', 'text-gray-900', 'font-semibold');
+                        link.classList.remove('text-gray-600');
+                    }
+                });
+            }
+
+            window.navigate = function (event, pageId) {
+                if (event) event.preventDefault();
+
+                // Update content
+                pageContent.innerHTML = pages[pageId];
+
+                // Update URL hash
+                history.pushState(null, null, `#${pageId}`);
+
+                // Update active link styling
+                updateActiveLink(pageId);
+
+                // Scroll to top
+                window.scrollTo(0, 0);
+
+                // Hide mobile menu after navigation
+                mobileMenu.classList.add('hidden');
+
+                // Re-attach form listener if it's the contact page
+                if (pageId === 'contact') {
+                    const contactForm = document.getElementById('contact-form');
+                    if (contactForm) {
+                        contactForm.addEventListener('submit', handleFormSubmit);
+                    }
+                    document.getElementById('doItHere').innerHTML = getEmail();
+                }
+            }
+
+            function handleFormSubmit(event) {
+                event.preventDefault();
+                const form = event.target;
+                const feedbackEl = document.getElementById('form-feedback');
+                feedbackEl.textContent = 'Sending...';
+                feedbackEl.className = 'mt-4 text-center text-blue-600';
+
+                // Simulate form submission
+                setTimeout(() => {
+                    feedbackEl.textContent = 'Thank you for your message! We will get back to you shortly.';
+                    feedbackEl.className = 'mt-4 text-center text-green-600 font-semibold';
+                    form.reset();
+                }, 1500);
+            }
+
+            // Initial page load
+            const initialPage = window.location.hash.substring(1) || 'home';
+            if (pages[initialPage]) {
+                navigate(null, initialPage);
+            } else {
+                navigate(null, 'home');
+            }
+
+            // Handle browser back/forward
+            window.onpopstate = function () {
+                const pageId = window.location.hash.substring(1) || 'home';
+                if (pages[pageId]) {
+                    navigate(null, pageId);
+                }
+            };
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Add fade-in animation class to Tailwind config
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fade-in {
+                    animation: fadeIn 0.5s ease-out forwards;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+
+</html>
